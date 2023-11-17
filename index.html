@@ -4,12 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mobile Number Input</title>
+    <title>OTP Verification</title>
+    <title>Terms and Conditions</title>
 </head>
 <body>
-    <form action="/process" method="post">
+    <form action="/generate-otp" method="post">
         <label for="mobileNumber">Enter Mobile Number:</label>
         <input type="tel" id="mobileNumber" name="mobileNumber" required>
-        <button type="submit">Submit</button>
+        <button type="submit">Generate OTP</button>
     </form>
+     <form action="/verify-otp" method="post">
+        <label for="otp">Enter OTP:</label>
+        <input type="text" id="otp" name="otp" required>
+        <input type="hidden" name="mobileNumber" value="{{mobileNumber}}">
+        <button type="submit">Verify OTP</button>
+    </form>
+    <h2>Terms and Conditions</h2>
+    <!-- Include your terms and conditions text here -->
+    <form action="/proceed-to-payment" method="post">
+        <input type="hidden" name="mobileNumber" value="{{mobileNumber}}">
+        <button type="submit">Accept and Proceed to Payment</button>
+    </form>
+    <a href="/terms?mobileNumber={{mobileNumber}}">Accept Terms and Conditions</a>
 </body>
 </html>
