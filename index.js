@@ -31,3 +31,13 @@ app.post('/verify-otp', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
+// ... (existing code)
+
+app.post('/proceed-to-payment', (req, res) => {
+    const { mobileNumber } = req.body;
+    res.sendFile(__dirname + '/payment.html');
+});
+app.get('/terms', (req, res) => {
+    const mobileNumber = req.query.mobileNumber;
+    res.render(__dirname + '/terms.html', { mobileNumber });
+});
